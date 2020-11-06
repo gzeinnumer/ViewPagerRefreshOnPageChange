@@ -2,9 +2,10 @@
  refresh  page setip tap dipilih
 
 - [**ViewPager**](https://github.com/gzeinnumer/ViewPagerSimple)
-read this before execute `addOnPageChangeListener`
+read this before execute `viewPager.addOnPageChangeListener`
 
-- Listener `addOnPageChangeListener`
+- Listener `viewPager.addOnPageChangeListener`
+#### MainActivity.java [FullCode](https://github.com/gzeinnumer/ViewPagerSimple#mainactivityjava)
 ```java
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +28,51 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+}
+```
+
+#### ViewPagerAdapter.java [FullCode](https://github.com/gzeinnumer/ViewPagerSimple#viewpageradapterjava)
+```java
+public class ViewPagerAdapter extends FragmentPagerAdapter {
+
+    ...
+
+    //add this
+    public interface Updateable {
+        void update();
+    }
+}
+```
+
+#### FirstFragment [FullCode](https://github.com/gzeinnumer/ViewPagerSimple#firstfragmentjava)
+```java
+//add implements
+public class FirstFragment extends Fragment implements ViewPagerAdapter.Updateable {
+
+    //add this
+    @Override
+    public void update() {
+        Toast.makeText(requireContext(), "Update Here 1", Toast.LENGTH_SHORT).show();
+    }
+
+    ...
+
+}
+```
+
+#### SecondFragment [FullCode](https://github.com/gzeinnumer/ViewPagerSimple#secondfragmentjava)
+```java
+//add implements
+public class SecondFragment extends Fragment implements ViewPagerAdapter.Updateable {
+
+    //add this
+    @Override
+    public void update() {
+        Toast.makeText(requireContext(), "Update Here 2", Toast.LENGTH_SHORT).show();
+    }
+
+    ...
+
 }
 ```
 
